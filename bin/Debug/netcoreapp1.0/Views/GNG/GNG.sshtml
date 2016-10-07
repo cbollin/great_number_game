@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="UTF-8">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+         <title>GNG</title>
+    </head>
+    <body>
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am thinking of a number between 1 and 100...</p>
+        <p>Take a Guess!</p> 
+
+
+        @If.Context.ViewBag.tooHigh
+            <h5 style="color: red;">Guess is too high!</h5>
+        @EndIf
+
+        @If.Context.ViewBag.tooLow
+            <h5 style="color: red;">Guess is too low!</h5>
+        @EndIf
+
+        @If.Context.ViewBag.correct
+            <h5 style="color: green;">That's correct! Click to Play again!</h5>
+            <form action="/clear" method="post">
+                <input type="submit" value="Play Again!">
+            </form>
+        @EndIf
+
+        @If.Context.ViewBag.showForm
+            <form action="/formsubmitted" method="post">
+                <input type="number" name="guess"/>
+                <input type="submit" value="Guess">
+            </form>
+        @EndIf
+
+
+    </body>
+</html>
